@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+int main() {
+  int a[9][5];
+  int k[9]={0}, rows=0, n=0;
+  cout << "Input matrix 9x5:" << endl;
+  for (int i=0; i < 9; i++){
+    for(int j=0; j < 5; j++){
+      cin >> a[i][j];
+      if (a[i][j]%2 != 0){
+        k[i]++;
+      }
+    }
+  }
+  cout << "Matrix:\n" << endl;
+  for (int i=0; i < 9; i++){
+    for(int j=0; j < 5; j++){
+      cout << a[i][j];
+    }
+  }
+  for(int i=0; i < 9; i++){
+    if(k[i]%2 != 0){
+      rows++;
+    }
+  }
+  int **b = new int *[rows];
+  for(int i=0; i < rows; i++){
+    b[i] = new int [5];
+  }
+  for(int i=0; i < 9; i++){
+    if(k[i]%2 != 0){
+      for (int j=0;j<4;j++){
+        b[n][j]=a[i][j];
+        n++;
+      } 
+    }
+  }
+  cout << "Matrix with no unpaired elements in its rows:" << endl;
+  for (int i=0; i < rows; i++)
+  { 
+    for (int j=0; j < 5; j++){
+      cout<<b[i][j]<<"\t";
+    }
+    cout << endl;
+  }
+  for (int i=0; i<rows; i++){
+    delete [] b[i];  
+  }
+  delete []b;
+  system ("pause>>void");
+  return 0;
+}
